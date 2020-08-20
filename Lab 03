@@ -62,7 +62,7 @@ int main(){
 #include<math.h>
     int main(){
         double l,side,area;
-        printf("Please enter the lenght from the center of a pentagon to a vertex: ");
+        printf("Please enter the length from the center of a pentagon to a vertex: ");
         scanf("%lf",&l);
         side = 2.0*l*sin(M_PI/5.0);
         area = ((3.0*sqrt(3.0))/2.0)*pow(side,2.0);
