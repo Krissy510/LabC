@@ -1,1 +1,35 @@
+#Q2
+#include <stdio.h>
+#include <math.h>
+int main() {
+    float p,r,y;
+    int n;
+    printf("Please enter the invested principle: ");
+    scanf("%f",&p);
+    printf("Please enter the interest rate: ");
+    scanf("%f",&r);
+    printf("Please enter the number of years: ");
+    scanf("%d",&n);
+    r += 1;
+    y = pow(r,n);
+    y *= p;
+    printf("The total amount of money after 30 years is %f",y);
+}
 
+#Q3
+#include <stdio.h>
+#include <math.h>
+int main() {
+    double h = 6.626 * (pow(10,-34)),v = 2.998 * (pow(10,8)),m = 9.109 * (pow(10,-31));
+    double p1,p2,p3;
+    printf("Please enter a value: ");
+    scanf("%lf %lf %lf",&p1,&p2,&p3);
+    p1 = v * (p1/100.0);
+    p2 = v * (p2/100.0);
+    p3 = v * (p3/100.0);
+    printf("Plank's constant = %+.3e\n",h);
+    printf("Mass of the electron = %+.3le kg\n\n",m);
+    printf("Velocity = %+.3e m/s Wavelength = %+.3e m\n",p1,h / (m*p1));
+    printf("Velocity = %+.3e m/s Wavelength = %+.3e m\n",p2,h / (m*p2));
+    printf("Velocity = %+.3e m/s Wavelength = %+.3e m",p3,h / (m*p3));
+}
