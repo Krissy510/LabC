@@ -71,3 +71,5 @@ int main(){
         printf("The area of the pentagon = %.4lf\n",area);
 
 }
+
+int var // var
