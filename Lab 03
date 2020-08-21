@@ -1,0 +1,73 @@
+#Q2
+#Sample input: Please enter the invested principle: 10000.0
+Please enter the interest rate: 0.08
+Please enter the number of years: 30
+
+#include <stdio.h>
+#include <math.h>
+int main() {
+    float p,r,y;
+    int n;
+    printf("Please enter the invested principle: ");
+    scanf("%f",&p);
+    printf("Please enter the interest rate: ");
+    scanf("%f",&r);
+    printf("Please enter the number of years: ");
+    scanf("%d",&n);
+    r += 1;
+    y = pow(r,n);
+    y *= p;
+    printf("The total amount of money after 30 years is %f",y);
+}
+
+#Q3
+#Sample input: 20.0 50.0 100.0
+
+#include <stdio.h>
+
+int main() {
+    double h = 6.626e-34,v = 2.998e08,m = 9.109e-31;
+    double p[3];
+
+    printf("Please enter a value: ");
+    scanf("%lf %lf %lf",&p[0],&p[1],&p[2]);
+    printf("Plank's constant = %+.3e\n",h);
+    printf("Mass of the electron = %+.3le kg\n\n",m);
+    for(int i = 0; i < 3; i++){
+        p[i] = v * (p[i] / 100.0);
+        printf("Velocity = %+.3e m/s Wavelength = %+.3e m\n",p[i],h / (m*p[i]));
+    }
+}
+
+#Q4 Sample input: 5.5 14.234 123.45
+#include <stdio.h>
+#include <math.h>
+#define g 9.81
+
+int main(){
+    float l[3];
+    float t;
+    printf("Please enter three values: ");
+    scanf("%f %f %f",&l[0],&l[1],&l[2]);
+    printf("Length (m) Period (sec)\n");
+    for(int i = 0; i<3; i++){
+        t = M_PI*(2*(sqrt(l[i]/g)));
+        printf("%10.2f\t\t%7.2f\n",l[i],t);
+    }
+}
+
+#Q5 
+#Sample input: 12.345
+
+#include<stdio.h>
+#include<math.h>
+    int main(){
+        double l,side,area;
+        printf("Please enter the length from the center of a pentagon to a vertex: ");
+        scanf("%lf",&l);
+        side = 2.0*l*sin(M_PI/5.0);
+        area = ((3.0*sqrt(3.0))/2.0)*pow(side,2.0);
+        printf("The side of the pentagon = %.4lf\n",side);
+        printf("The area of the pentagon = %.4lf\n",area);
+
+}
