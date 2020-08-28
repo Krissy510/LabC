@@ -62,10 +62,10 @@ int main(){
     s = ((a+b+c)/2.0);
     area = sqrt(s*(s-a)*(s-b)*(s-c));
     if(((pow(a,2.0)) + (pow(b,2.0))) == pow(c,2.0)){
-        printf("Side a = %.1f\nSide b = %.1f\nSide c = %.1f\nArea = %.3f\nThis is a triangle.",a,b,c,area);
+        printf("Side a = %.1f\nSide b = %.1f\nSide c = %.1f\nArea = %.3f\nThis is a right triangle.",a,b,c,area);
     }
     else{
-        printf("Side a = %.1f\nSide b = %.1f\nSide c = %.1f\nArea = %.3f\nThis is not a triangle.",a,b,c,area);
+        printf("Side a = %.1f\nSide b = %.1f\nSide c = %.1f\nArea = %.3f\nThis is not a right triangle.",a,b,c,area);
     }
 }
 
