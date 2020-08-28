@@ -47,3 +47,40 @@ int main(){
 }
 
 #Q5
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main(){
+    float a,b,c,area,s;
+    printf("Enter the values here: ");
+    scanf("%f %f %f",&a,&b,&c);
+    if ((a+b) < c){
+        printf("Invalid: This is not a triangle.");
+        exit(0);
+    }
+    s = ((a+b+c)/2.0);
+    area = sqrt(s*(s-a)*(s-b)*(s-c));
+    if(((pow(a,2.0)) + (pow(b,2.0))) == pow(c,2.0)){
+        printf("Side a = %.1f\nSide b = %.1f\nSide c = %.1f\nArea = %.3f\nThis is a triangle.",a,b,c,area);
+    }
+    else{
+        printf("Side a = %.1f\nSide b = %.1f\nSide c = %.1f\nArea = %.3f\nThis is not a triangle.",a,b,c,area);
+    }
+}
+
+#Q6
+
+#include <stdio.h>
+
+int main(){
+    float x,y;
+    printf("Enter the values here: ");
+    scanf("%f %f",&x,&y);
+    if((x >= 0 && x<=200) && (y >= 0 && y<=100)){
+        printf("Inside");
+    } else{
+        printf("Outside");
+    }
+
+}
