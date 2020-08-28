@@ -1,4 +1,4 @@
-#Q1
+#Q3
 #include <stdio.h>
 
 int main(){
@@ -24,4 +24,26 @@ int main(){
     }
 }
 
-#Q2
+#Q4
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main(){
+    float a,b,c,x1,x2;
+    printf("Enter the values here: ");
+    scanf("%f %f %f",&a,&b,&c);
+    if(a == 0.0){
+        printf("Invalid: a = 0");
+        exit(0);
+    }
+    if (((pow(b,2.0))-(4.0*a*c))< 0){
+        printf("Invalid: b^2 – 4*a*c <0");
+        exit(0);
+    }
+    x1 = ((-b) + sqrt((pow(b,2.0))-(4.0*a*c)))/(2.0*a);
+    x2 = ((-b) - sqrt((pow(b,2.0))-(4.0*a*c)))/(2.0*a);
+    printf("x1 = %.1f\nx2 = %.1f",x1,x2);
+}
+
+#Q5
