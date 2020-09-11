@@ -1,4 +1,4 @@
-#Q1
+#Q3
 
 #include <stdio.h>
 
@@ -14,7 +14,7 @@ int main(){
     }
 }
 
-#Q2
+#Q4
 
 #include <stdio.h>
 #include <math.h>
@@ -33,7 +33,7 @@ int main(){
     return 0;
 }
 
-#Q3
+#Q5
 
 #include <stdio.h>
 
@@ -50,5 +50,32 @@ int main(){
         }
         printf("The total number of possible combinations = %d",count);
     } else printf("Invalid number!");
+    return 0;
+}
+
+#Q6
+
+#include <stdio.h>
+
+int main(){
+    int top = 10,n = 10,cor,count,down = 0;
+    printf("   ");
+    for( ; top >= 1; top--){
+        printf("   %3d",top);
+    }
+    printf("\n");
+    // clear
+    for(int clear = 0; clear < 63; clear++){
+        printf("-");
+    }
+    printf("\n");
+    for (cor = 10 ; cor >= 1; cor--){
+        printf("%2d|",cor);
+        for (count = 0; count <= down ; count++) {
+            printf("   %3d",cor*(n-count));
+        }
+        down++;
+        printf("\n");
+    }
     return 0;
 }
