@@ -32,3 +32,23 @@ int main(){
     }
     return 0;
 }
+
+#Q3
+
+#include <stdio.h>
+
+int main(){
+    int n,count = 0;
+    printf("Enter an integer n (1 < n < 10): ");
+    scanf("%d",&n);
+    if(n > 1 && n < 10){
+        for(int out = 1; out < n; out++){
+            for(int in = out+1; in <= n; in++){
+                printf("%d %d\n",out,in);
+                count++;
+            }
+        }
+        printf("The total number of possible combinations = %d",count);
+    } else printf("Invalid number!");
+    return 0;
+}
