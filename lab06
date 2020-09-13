@@ -1,3 +1,4 @@
+// Q2.1
 #define _CRT_SECURE_NO_WARNINGS
 // for visual studio only
 #include<stdio.h>
@@ -39,5 +40,36 @@ int check(int n) {  // find prime
 			}
 		}
 		return 1;
+	}
+}
+
+
+// Q3
+#define _CRT_SECURE_NO_WARNINGS
+// for visual studio only
+#include<stdio.h>
+// function protype
+int gcd(int, int);
+// main function
+int main() 
+{
+	int val1 = 80844, val2 = 25320;
+	printf("The GCD of %d and %d is %d",val1,val2,gcd(val1,val2));
+	return 0;
+}
+
+int gcd(int val1, int val2) {
+	int remainder = 1;
+	while (remainder != 0)
+	{
+		if (val1 % val2 == 0) {
+			return val2;
+		}
+		else
+		{
+			remainder = val1 % val2;
+			val1 = val2;
+			val2 = remainder;
+		}
 	}
 }
