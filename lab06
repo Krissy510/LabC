@@ -73,3 +73,48 @@ int gcd(int val1, int val2) {
 		}
 	}
 }
+
+// Q4
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    srand(time(NULL)); //A function that returns the current time of the computer
+    int ran_number, guessed_num;
+    char temp, ty;
+    while (1) {
+        system("cls");
+        ran_number = (rand() % 100 + 1);
+        printf("Ans = %d\n", ran_number);
+        int check = 0, guess = 7;
+        for (; guess >= 1; guess--) {
+            printf("Enter  your number here:");
+            scanf("%d", &guessed_num);
+            if (guessed_num == ran_number) {
+                printf("\nHooray, you hav won!\n");
+                break;
+            }
+            else
+            {
+                printf("Wrong Number, Try agian!\n");
+                if (guessed_num > ran_number)
+                    printf("Too high\n");
+                else if (guessed_num < ran_number)
+                    printf("Too low\n");
+            }
+        }
+        printf("Would you like to play again (y/n)?\n");
+        scanf("%c%c",&temp,&ty);
+        if (ty == 'n')
+            break;
+        else if (ty == 'y')
+            continue;
+        else {
+            printf("Invalid Input!");
+            break;
+        }
+    }
+    return 0;
+}	
