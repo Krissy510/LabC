@@ -1,0 +1,43 @@
+#define _CRT_SECURE_NO_WARNINGS
+// for visual studio only
+#include<stdio.h>
+// function protype
+int check(int); // find prime
+void showPrime(int); // showb prime
+// main function
+int main() 
+{
+	showPrime(20);
+	return 0;
+}
+
+void showPrime(int n) {
+	if (n >= 2 && n <= 1000) {
+		for (int num = 2; num <= n; num++) {
+			if (num == 2) {
+				printf("%d", num);
+				continue;
+			}
+			if (check(num) == 1) {
+				printf(", %d", num);
+			}
+		}
+	}
+	else
+		printf("Invalid value!");
+}
+
+int check(int n) {  // find prime
+	if (n % 2 == 0) {
+		return 0;
+	}
+	else
+	{
+		for (int find = 2; find <= n / 2; find++) {
+			if (n % find == 0) {
+				return 0;
+			}
+		}
+		return 1;
+	}
+}
