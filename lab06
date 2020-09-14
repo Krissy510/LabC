@@ -196,18 +196,19 @@ int main() {
 
 
 int main() {
-    int sum = 0, ra1, ra2, ra3, ra4;
+    int sum, ra1, ra2, ra3, ra4;
     char ask, temp, first_num, first_suit, sec_num, sec_suit, card_num[13] = "A23456789tJQK", suit[4] = "CHDS";
     srand(time(NULL)); //A function that returns the current time of the computer
-    while (1) {
-        system("cls");
-        printf("Deal two cards (Yes or No)?:");
-        scanf("%c%c", &ask, &temp);
-        if (ask == 'N') {
-            printf("The total value of your cards is %d\n", sum);
-            return 0;
+    while (1) {  // BIG LOOP for paying again
+        sum = 0;
+        system("cls"); // clear terminal
+        printf("Deal two cards (Yes or No)?:"); // display message
+        scanf("%c%c", &ask, &temp); // ask user wether he is going to play
+        if (ask == 'N') { // user say's no
+            printf("The total value of your cards is %d\n", sum); // display the 0 score since he did not want to play
+            return 0; // stop the program
         }
-        else if (ask == 'Y') {
+        else if (ask == 'Y') {  // user say yes
             printf("Your cards are\n");
             ra1 = rand() % 13;
             ra2 = rand() % 4;
@@ -234,31 +235,32 @@ int main() {
             else
                 printf(" and %c%c\n", sec_num, sec_suit);
             if (isalpha(first_num)) {
-                if (first_num == 't')
-                    sum += 10;
+                if (first_num == 'A')
+                    sum += 1;
             }
-            else
+            else if (isdigit(first_num))
                 sum += (first_num - '0');
+            printf("sum = %d\n",sum);
             if (isalpha(sec_num)) {
-                if (sec_num == 't')
-                    sum += 10;
+                if (sec_num == 'A')
+                    sum += 1;
             }
-            else {
+            else if (isdigit(sec_num)) {
                 sum += (sec_num - '0');
             }
+            printf("sum = %d\n",sum);
             printf("Draw a card (Yes or No)?:");
             scanf("%c%c", &ask, &temp);
             if (ask == 'N') {
                 printf("The total value of your cards is %d\n", sum % 10);
                 printf("----------------------------\n\n");
-            }
-            else if (ask == 'Y') {
+            } else if (ask == 'Y') {
                 int ra5, ra6;
                 char third_num, third_suit;
                 while (1) {
                     ra5 = rand() % 13;
                     ra6 = rand() % 4;
-                    if (ra5 == ra1 && ra6 == ra2 && ra5 == ra3 && ra6 == ra4) {
+                    if ((ra5 == ra1 && ra6 == ra2) || (ra5 == ra3 && ra6 == ra4)) {
                         continue;
                     }
                     else {
@@ -268,10 +270,10 @@ int main() {
                     }
                 }
                 if (isalpha(third_num)) {
-                    if (third_num == 't')
-                        sum += 10;
+                    if (third_num == 'A')
+                        sum += 1;
                 }
-                else {
+                else if (isdigit(third_num)){
                     sum += (third_num - '0');
                 }
                 if (first_num == 't')
@@ -289,10 +291,10 @@ int main() {
                 printf("The total value of your cards is %d\n", sum % 10);
                 printf("----------------------------\n\n");
             }
-            else {
-                printf("Invalid value!\n");
-                return -1;
-            }
+        }
+        else {
+            printf("Invalid value!``````\n");
+            return -1;
         }
         printf("Play one more time? (Yes or No)?:");
         scanf("%c%c", &ask, &temp);
