@@ -149,3 +149,34 @@ int main() {
     }
     return 0;
 }
+
+//Q5 v.2
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int ra[6][2] = { {1,20},{9,19},{8,5},{23,5},{21,16},{15, 14}}, ra_num1,ra_num2, count = 0, check1, check2;
+    srand(time(NULL)); //A function that returns the current time of the computer
+    while (1) {
+        check2 = 0; // check that both ran num are correct
+        ra_num1 = rand()%26+1;
+        ra_num2 = rand()%26+1;
+        for (int i = 0; i < 6; i++) {
+            if (ra_num1 == ra[i][0] && ra_num2 == ra[i][1])
+            {
+                check2 = 1;
+                break;
+            }
+        }
+        if (check2 == 1) {
+            printf("The monkeys type %d letters.", count);
+            break;
+        }
+        count += 2;
+    }
+    return 0;
+}
+
+//Q6
