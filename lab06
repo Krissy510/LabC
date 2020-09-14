@@ -240,15 +240,13 @@ int main() {
             }
             else if (isdigit(first_num))
                 sum += (first_num - '0');
-            printf("sum = %d\n",sum);
-            if (isalpha(sec_num)) {
+		if (isalpha(sec_num)) {
                 if (sec_num == 'A')
                     sum += 1;
             }
             else if (isdigit(sec_num)) {
                 sum += (sec_num - '0');
             }
-            printf("sum = %d\n",sum);
             printf("Draw a card (Yes or No)?:");
             scanf("%c%c", &ask, &temp);
             if (ask == 'N') {
