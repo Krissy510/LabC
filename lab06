@@ -1,3 +1,7 @@
+How to set range rand()
+
+rand() % (max_number + 1 - minimum_number) + minimum_number
+
 // Q2.1
 #define _CRT_SECURE_NO_WARNINGS
 // for visual studio only
