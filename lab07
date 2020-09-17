@@ -15,3 +15,36 @@ int main()
    drawLine(5);
    return 0;
  }
+
+#Q2
+
+#include <stdio.h>
+#include <stdlib.h>
+int count = 1;
+
+void drawLine(int n){
+	if(n!=0)
+	{
+		printf("*");
+		n--;
+		return drawLine(n);
+	}
+}
+
+void drawtrianle(int n){
+	if(count <= n){
+		drawLine(count);
+		printf("\n");
+		count++;
+		drawtrianle(n);
+		}
+	}
+	
+int main()
+ {
+   drawtrianle(5);
+   return 0;
+ }
+ 
+ #Q3
+ 
