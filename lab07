@@ -1,4 +1,21 @@
-#Q1
+#Q1 b)
+#include <stdio.h>
+int fib( int n ) {
+
+    if (n<2)
+        return n;
+    else{
+        return fib(n-1)+ fib(n-2);
+    }
+}
+int main() {
+    int inNum;
+    printf("Enter a positive integer: ");
+    scanf("%d", &inNum);
+    printf("fib(%d) = %d\n", inNum, fib(inNum));
+    return 0;
+}
+#Q2
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,7 +33,7 @@ int main()
    return 0;
  }
 
-#Q2
+#Q3
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -46,21 +63,4 @@ int main()
    return 0;
  }
  
- #Q3
-
-#include <stdio.h>
-int fib( int n ) {
-
-    if (n<2)
-        return n;
-    else{
-        return fib(n-1)+ fib(n-2);
-    }
-}
-int main() {
-    int inNum;
-    printf("Enter a positive integer: ");
-    scanf("%d", &inNum);
-    printf("fib(%d) = %d\n", inNum, fib(inNum));
-    return 0;
-}
+ #Q4
