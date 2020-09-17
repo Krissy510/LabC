@@ -31,18 +31,18 @@ void drawLine(int n){
 	}
 }
 
-void drawtrianle(int n){
+void drawtriangle(int n){
 	if(count <= n){
 		drawLine(count);
 		printf("\n");
 		count++;
-		drawtrianle(n);
+		drawtriangle(n);
 		}
 	}
 	
 int main()
  {
-   drawtrianle(5);
+   drawtriangle(5);
    return 0;
  }
  
