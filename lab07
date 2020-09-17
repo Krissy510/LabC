@@ -115,3 +115,35 @@ int main() {
     prime_fac(21);
 
 }
+
+#Q5
+
+// Q3
+#define _CRT_SECURE_NO_WARNINGS
+// for visual studio only
+#include<stdio.h>
+// function protype
+int gcd(int, int);
+// global
+int remainder = 1,temp;
+// main function
+int main()
+{
+	int val1 = 84, val2 = 49;
+	printf("The GCD of %d and %d is %d", val1, val2, gcd(val1, val2));
+	return 0;
+}
+
+int gcd(int val1, int val2) {
+	if (val2 == 0)
+		return 0;
+	if (val1 % val2 == 0) 
+		return val2;
+	else{
+		temp = val1 % val2;
+		val1 = val2;
+		return gcd(val1, temp);
+	}
+}
+
+#Q6
