@@ -1,0 +1,17 @@
+#Q1
+
+#include <stdio.h>
+#include <stdlib.h>
+void drawLine(int n){
+	if(n!=0)
+	{
+		printf("*");
+		n--;
+		return drawLine(n);
+	}
+}
+int main()
+ {
+   drawLine(5);
+   return 0;
+ }
