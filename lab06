@@ -1,3 +1,40 @@
+// Q1.3
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int rollDice() {
+	return(1 + rand() % 6);
+}
+int main() {
+	int i, randVal, n,c1,c2,c3,c4,c5,c6;
+	srand(time(NULL)); //set seed
+	c1 = c2 = c3 = c4 = c5 = c6 = 0; //clear count variables
+	n = 10; //init n
+	for (i = 1; i <= 1000000; i++) {
+		randVal = rollDice(); //roll a dice
+		switch (randVal) {
+		case 1: c1++; break;
+		case 2: c2++; break;
+		case 3: c3++; break;
+		case 4: c4++; break;
+		case 5: c5++; break;
+		case 6: c6++; break;
+		}
+		if (i == n) {
+			printf("After %d rolls:\n", n);
+			printf("\tgetting 1 = %6.2f %%\n", 100.0f * c1 / n);
+			printf("\tgetting 2 = %6.2f %%\n", 100.0f * c2 / n);
+			printf("\tgetting 3 = %6.2f %%\n", 100.0f * c3 / n);
+			printf("\tgetting 4 = %6.2f %%\n", 100.0f * c4 / n);
+			printf("\tgetting 5 = %6.2f %%\n", 100.0f * c5 / n);
+			printf("\tgetting 6 = %6.2f %%\n", 100.0f * c6 / n);
+			n *= 10;
+		}
+	}
+	return 0;
+}
+
 How to set range rand()
 
 rand() % (max_number + 1 - minimum_number) + minimum_number
