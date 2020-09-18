@@ -123,36 +123,74 @@ int main() {
     return 0;
 }	
 
-// Q5
+// Q5 correct vr.
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
 int main() {
-    int ra[6],ra_num,count = 0 ,check1= 0,check2 = 0;
+    int ra_num, count = 0, check1 = 0, check = 0;
     srand(time(NULL)); //A function that returns the current time of the computer
-    for(int add = 0; add < 6; add++){
-        ra[add] = (rand()%52+1);
-    }
-    while (1){
-        ra_num = (rand()%52+1);
-        for(check1 = 0; check1 < 6; check1++){
-            if (ra_num == ra[check1]){
-                check2 = 1;
-                break;
-            }
+    while (1) {
+        ra_num = rand() % 26 + 1;
+        switch (ra_num) {
+            case 1:
+                ra_num = rand() % 26 + 1;
+                if (ra_num == 20) {
+                    check = 1;
+                } else
+                    count += 2;
+            case 9:
+                ra_num = rand() % 26 + 1;
+                if (ra_num == 19) {
+                    check = 1;
+                } else
+                    count += 2;
+            case 8:
+                ra_num = rand() % 26 + 1;
+                if (ra_num == 5) {
+                    check = 1;
+                } else
+                    count += 2;
+            case 23:
+                ra_num = rand() % 26 + 1;
+                if (ra_num == 5) {
+                    check = 1;
+                } else
+                    count += 2;
+
+            case 21:
+                ra_num = rand() % 26 + 1;
+                if (ra_num == 16) {
+                    check = 1;
+                } else
+                    count += 2;
+            case 15:
+                ra_num = rand() % 26 + 1;
+                if (ra_num == 14) {
+                    check = 1;
+                } else
+                    count += 2;
+            default:
+                count++;
         }
-        if (check2 != 1){
-            count += 2;
-        }
-        else if (check2 == 1){
-            printf("The monkey typed %d letters",count);
+        if (check == 1) {
+            printf("The monkeys type %d letters.", count);
             break;
         }
     }
     return 0;
 }
+
+/*
+ * at = 1 20
+ * is = 9 19
+ * he = 8 5
+ * we = 23 5
+ * up = 21 16
+ * on = 15,14
+ */
 
 //Q5 v.2
 #define _CRT_SECURE_NO_WARNINGS
