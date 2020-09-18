@@ -146,3 +146,33 @@ int gcd(int val1, int val2) {
 }
 
 #Q6
+
+#include <stdio.h>
+int reverse(int a,int b){
+    int x;
+        if(a>0){
+        x = a%10;
+        b = (b * 10)+x;
+        a = a/10;
+        return(reverse(a,b));
+    }
+    return b;
+}
+int Check(int x){
+    if(x == reverse(x,0)){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+int main(){
+    int num;
+    //for (int i = 1;i<=5;i++){
+    printf("Enter a integer: ");
+    scanf("%d",&num);
+    if(Check(num))
+        printf("%d is Palindrome\n\n",num);
+    else
+        printf("%d is Not Palindrome\n\n",num);
+    //}
+}
