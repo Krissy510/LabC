@@ -176,24 +176,28 @@ int main() {
                 ra_num = rand() % 26 + 1;
                 if (ra_num == 20) {
                     check = 1;
+                    break;
                 } else
                     count += 2;
             case 9:
                 ra_num = rand() % 26 + 1;
                 if (ra_num == 19) {
                     check = 1;
+                    break;
                 } else
                     count += 2;
             case 8:
                 ra_num = rand() % 26 + 1;
                 if (ra_num == 5) {
                     check = 1;
+                    break;
                 } else
                     count += 2;
             case 23:
                 ra_num = rand() % 26 + 1;
                 if (ra_num == 5) {
                     check = 1;
+                    break;
                 } else
                     count += 2;
 
@@ -201,12 +205,14 @@ int main() {
                 ra_num = rand() % 26 + 1;
                 if (ra_num == 16) {
                     check = 1;
+                    break;
                 } else
                     count += 2;
             case 15:
                 ra_num = rand() % 26 + 1;
                 if (ra_num == 14) {
                     check = 1;
+                    break;
                 } else
                     count += 2;
             default:
