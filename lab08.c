@@ -30,7 +30,7 @@ void main()
     printf("The array of %d floating-point elements:\n", size);
     displayArray( val, size );
     bubbleSort( val, size );
-    printf("\n\nAftersorting:\n", size);
+    printf("\n\nAfter sorting:\n", size);
     displayArray( val, size );
 }
 //Output
@@ -38,7 +38,7 @@ void main()
 //6.21  4.83  9.49 10.66  1.02  7.77
 //
 //
-//Aftersorting:
+//After sorting:
 //1.02  4.83  6.21  7.77  9.49 10.66
 
 //Q1.2
@@ -73,7 +73,7 @@ void main()
     printf("The array of %d floating-point elements:\n", size);
     displayArray( val, size );
     bubbleSort( val, size );
-    printf("\n\nAftersorting:\n", size);
+    printf("\n\nAfter sorting:\n", size);
     displayArray( val, size );
 }
 //Output
@@ -81,7 +81,7 @@ void main()
 //6.21  4.83  9.49 10.66  1.02  7.77
 //
 //
-//Aftersorting:
+//After sorting:
 //10.66  9.49  7.77  6.21  4.83  1.02
 
 //Q2.1
