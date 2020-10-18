@@ -246,3 +246,6 @@ int main() {
     printf("u: %d\n", alpha_arr[4]);
     return 0;
 }
+
+//Q.5
+
