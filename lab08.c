@@ -285,3 +285,4 @@ int main(){
     sd2 = sqrt(sum/dob_length);
     printf("SD = %.4lf\n",sd2);
     return 0;
+}
