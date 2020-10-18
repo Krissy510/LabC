@@ -1,4 +1,4 @@
-Q1.
+//Q1.
 #include<stdio.h>
 void swap( float* val1Addr, float* val2Addr )
 {
@@ -40,3 +40,5 @@ void main()
 //
 //Aftersorting:
 //1.02  4.83  6.21  7.77  9.49 10.66
+
+//Q2
