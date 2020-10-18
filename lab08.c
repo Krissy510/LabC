@@ -184,3 +184,31 @@ void main()
 //1   2   1
 
 //Q.3
+#include <stdio.h>
+
+void positionMaxMin(double num[],int size, int* posMax, int* postMin){
+    int i;
+    double max = num[0],min = num[0]; //initialize value
+    *posMax = 0;
+    *postMin = 0;
+    for(i = 1; i < size; i++) {
+        if (num[i] > max) {
+            *posMax = i;
+            max = num[i];
+        } else if (num[i] < min) {
+            *postMin = i;
+            min = num[i];
+        }
+    }
+}
+
+int main(){
+    int posMax,posMin;
+    double num[] = {2.5,-2.0,1.3,5.7,-1.0,0.0};
+    int size = sizeof(num)/sizeof(num[0]);
+    positionMaxMin(num,size,&posMax,&posMin);
+    printf("posMax = %d\nposMin = %d\n",posMax,posMin);
+    return 0;
+}
+
+//Q.4
