@@ -134,3 +134,53 @@ void main()
 //  3   1   1   1
 
 //Q2.2
+void showMatrix(float mat[NUMROW][NUMCOL])
+{
+    int i, j;
+    for( i=0; i<NUMROW; i++ ){
+        for( j=0; j<NUMCOL; j++ )
+            printf("%3.0f ", mat[i][j]);
+        printf("\n");
+    }
+}
+
+void showTranspose( float mat[NUMCOL][NUMROW] ){
+    int i, j;
+    for( i=0; i<NUMCOL; i++ ){
+        for( j=0; j<NUMROW; j++ )
+            printf("%3.0f ", mat[i][j]);
+        printf("\n");
+    }
+}
+
+void transpose( float mat[NUMROW][NUMCOL], float transposeMat[NUMCOL][NUMROW] ){
+    int i,j;
+    for(i = 0; i < NUMROW;i++)
+        for(j = 0; j < NUMCOL;j++)
+            transposeMat[j][i] = mat[i][j];
+}
+
+
+void main()
+{
+    float A[NUMROW][NUMCOL] = { {1, 2, 0, 1},{0, 2, 1, 2},{1, 0, 1, 1}};
+    float tA[NUMCOL][NUMROW] = { {0,0,0},{0,0,0},{0,0,0},{0,0,0}};
+    printf("Matrix A: \n");
+    showMatrix( A );
+    transpose(A,tA);
+    printf("\nTranspose Matrix A: \n");
+    showTranspose(tA);
+}
+//Output
+//Matrix A:
+//1   2   0   1
+//0   2   1   2
+//1   0   1   1
+//
+//Transpose Matrix A:
+//1   0   1
+//2   2   0
+//0   1   1
+//1   2   1
+
+//Q.3
