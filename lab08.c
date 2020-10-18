@@ -249,3 +249,39 @@ int main() {
 
 //Q.5
 
+#include <stdio.h>
+#include <math.h>
+
+int main(){
+    int usin[20],sum = 0;
+    double avg1,sd1,avg2,sd2,dob_length = 20.0;
+    scanf("%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d",&usin[0],&usin[1],&usin[2],&usin[3],&usin[4],&usin[5],&usin[6],&usin[7],&usin[8],&usin[9],&usin[10],&usin[11],&usin[12],&usin[13],&usin[14],&usin[15],&usin[16],&usin[17],&usin[18],&usin[19]);
+    for(int loop = 0; loop < 20; loop++){
+        sum += usin[loop];
+    }
+    avg1 = sum/dob_length;
+    printf("AVG = %.4lf\n",avg1);
+    sum = 0;
+    for(int loop = 0; loop < 20; loop++){
+        sum += pow((usin[loop] - avg1),2);
+    }
+    sd1 = sqrt(sum/dob_length);
+    printf("SD = %.4lf\n",sd1);
+    sum = 0;
+    printf("After removing the outlines:\n");
+    for(int loop = 0; loop < 20; loop++){
+        if (abs((usin[loop] - avg1)) > (4*sd1))
+            dob_length -= 1;
+        else
+            sum += usin[loop];
+    }
+    avg2 = sum/dob_length;
+    printf("AVG = %.4lf\n",avg2);
+    sum = 0;
+    for(int loop = 0; loop < 20; loop++){
+        if (abs((usin[loop] - avg1)) <= (4*sd1))
+            sum += pow((usin[loop] - avg2),2);
+    }
+    sd2 = sqrt(sum/dob_length);
+    printf("SD = %.4lf\n",sd2);
+    return 0;
