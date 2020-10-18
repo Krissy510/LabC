@@ -212,3 +212,37 @@ int main(){
 }
 
 //Q.4
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int main() {
+    int alpha_arr[5] = { 0,0,0,0,0}; //{a,e,i,o,u}
+    char x;
+    while (1) {
+        x = getchar();
+        if (x == EOF) 
+            break;
+        if (x != '\n') {
+            x = tolower(x);
+            if (x == 'a')
+                alpha_arr[0]++;
+            else if (x == 'e')
+                alpha_arr[1]++;
+            else if (x == 'i')
+                alpha_arr[2]++;
+            else if (x == 'o')
+                alpha_arr[3]++;
+            else if (x == 'u')
+                alpha_arr[4]++;
+        }
+    }
+    printf("a: %d\n", alpha_arr[0]);
+    printf("e: %d\n", alpha_arr[1]);
+    printf("i: %d\n", alpha_arr[2]);
+    printf("o: %d\n", alpha_arr[3]);
+    printf("u: %d\n", alpha_arr[4]);
+    return 0;
+}
