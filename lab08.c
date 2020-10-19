@@ -248,6 +248,49 @@ int main() {
 }
 
 //Q.4 ver.arr
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int main() {
+    int alpha_arr[5] = { 0,0,0,0,0 }; //{a,e,i,o,u}
+    char temp_arr[999];
+    int count = 0;
+    char x;
+    while (1) {
+        x = getchar();
+        if (x == EOF)
+            break;
+        if (x != '\n') {
+            x = tolower(x);
+            if (x == 'a' || x == 'e' || x == 'i' || x == 'o' || x == 'u')
+            {
+                temp_arr[count] = x;
+                count++;
+            }
+        }
+    }
+    for (int loopcheck = 0; loopcheck != count; loopcheck++) {
+        if (temp_arr[loopcheck] == 'a')
+            alpha_arr[0]++;
+        else if (temp_arr[loopcheck] == 'e')
+            alpha_arr[1]++;
+        else if (temp_arr[loopcheck] == 'i')
+            alpha_arr[2]++;
+        else if (temp_arr[loopcheck] == 'o')
+            alpha_arr[3]++;
+        else if (temp_arr[loopcheck] == 'u')
+            alpha_arr[4]++;
+    }
+    printf("a: %d\n", alpha_arr[0]);
+    printf("e: %d\n", alpha_arr[1]);
+    printf("i: %d\n", alpha_arr[2]);
+    printf("o: %d\n", alpha_arr[3]);
+    printf("u: %d\n", alpha_arr[4]);
+    return 0;
+}
 
 //Q.5
 
