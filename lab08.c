@@ -247,6 +247,8 @@ int main() {
     return 0;
 }
 
+//Q.4 ver.arr
+
 //Q.5
 
 #include <stdio.h>
