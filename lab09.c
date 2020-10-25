@@ -139,3 +139,28 @@ do
 Process finished with exit code 0
 
 //Q3
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int count=0;
+
+int countVowelWord(char inStr[]){
+    char temp1[strlen(inStr)],temp2[strlen(inStr)];
+    strcpy(temp1, inStr);
+    char *token;
+    token = strtok (temp1," ,.-");
+    while(token != NULL){
+        token[0] = tolower(token[0]);
+        if(token[0] == 'a' || token[0] == 'e' || token[0] == 'i' || token[0] == 'o' || token[0] == 'u')
+            count++;
+        token = strtok (NULL,"- ,?.");
+    }
+    return count;
+}
+int main() {
+    char td[] = "   This is a test input";
+    printf("%d\n",countVowelWord(td));
+}
+
+//Q4
