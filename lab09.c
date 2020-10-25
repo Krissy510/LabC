@@ -66,3 +66,28 @@ Jack:0
 Jim:2
 
 Process finished with exit code 0
+
+//Q.2.1
+#include <stdio.h>
+#include <string.h>
+int main() {
+    char str[] ="-Hi, how are you?    -I'm fine. Thank you.";
+    char *token;
+    printf ("Splitting string \"%s\" into tokens:\n",str);
+    token = strtok (str," ,.-");
+    while(token != NULL){
+        puts(token);
+        token = strtok (NULL, "-,?.");
+    }
+    return 0;
+}
+
+Output:
+Splitting string "-Hi, how are you?    -I'm fine. Thank you." into tokens:
+Hi
+ how are you
+
+I'm fine
+ Thank you
+ 
+ //Q.2.2
