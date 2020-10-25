@@ -77,7 +77,7 @@ int main() {
     token = strtok (str," ,.-");
     while(token != NULL){
         puts(token);
-        token = strtok (NULL, "-,?.");
+        token = strtok (NULL, "- ,?.");
     }
     return 0;
 }
