@@ -91,3 +91,51 @@ I'm fine
  Thank you
  
  //Q.2.2
+#include <stdio.h>
+#include <string.h>
+#define MAXLEN 100
+#define MAXWORD 10
+
+int count=0;
+
+void splitString(char inStr[MAXLEN],char wordList[MAXWORD][MAXLEN]){
+    char *token;
+    token = strtok (inStr," ,.-");
+    while(token != NULL){
+        if (count == 10)
+            break;
+        sscanf(token, "%s", wordList[count]);
+        count++;
+        token = strtok (NULL,"- ,?.");
+    }
+    while (count != 10){
+        sscanf("", "%s", wordList[count]);
+        count++;
+    }
+}
+
+int main() {
+    char wordList1[MAXWORD][MAXLEN];
+    char strd[MAXLEN] ="-Hi, how are you?  -I'm fine. Thank you do .";
+    splitString(strd,wordList1);
+    for (int i = 0; i < 10; i++){
+        printf("%s\n",wordList1[i]);
+    }
+    return 0;
+}
+
+Output:
+Hi
+how
+are
+you
+I'm
+fine
+Thank
+you
+do
+∟C♣v`
+
+Process finished with exit code 0
+
+//Q3
