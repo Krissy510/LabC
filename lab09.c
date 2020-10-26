@@ -54,9 +54,9 @@ int searchString(char list[NUMSTR][MAXLEN], char query[] ){
 void main(){
     char nameList[NUMSTR][MAXLEN] = {"Joe", "Jane", "Joe","John","Jim", "Joe", "Jim"};
     puts("\n----------Searching----------");
-    printf("Joe:%d\n",searchString( nameList, "Joe"));
-    printf("Jack:%d\n",searchString( nameList, "Jack"));
-    printf("Jim:%d\n",searchString( nameList, "Jim"));
+    printf("%d\n",searchString( nameList, "Joe"));
+    printf("%d\n",searchString( nameList, "Jack"));
+    printf("%d\n",searchString( nameList, "Jim"));
 }
 
 Output:
