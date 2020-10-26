@@ -164,3 +164,58 @@ int main() {
 }
 
 //Q4
+#include<stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <math.h>
+
+void sumNumbersInString(char usstr[]){
+    int i,size = strlen(usstr),countint =0,temp;
+    double sum = 0,count = 0;
+    for(i = 0; i < size ; i++){ //count how many int there are in this str
+        if (isdigit(usstr[size-1-i]) != 0 && count == 0){
+            temp = usstr[size-1-i] - '0';
+            sum += temp;
+            count++;
+        }else if (isdigit(usstr[size-1-i]) != 0 && count != 0){
+            temp = usstr[size-1-i] - '0';
+            sum +=  temp * (pow(10,count));
+            count++;
+        }else if (isalpha(usstr[size-1-i]) != 0 && count != 0){
+            count = 0;
+            countint++;
+        }
+    }
+    for(i = 0; i < size ; i++){ //print the format
+        if (isdigit(usstr[i]) != 0 && count == 0){
+            printf("%c",usstr[i]);
+            count++;
+        }else if (isdigit(usstr[i]) != 0 && count != 0){
+            printf("%c",usstr[i]);
+        }else if (isalpha(usstr[i]) != 0 && count != 0){
+            if (countint - 1 > 0 ){
+                printf(" + ");
+            } else if (countint -1 == 0)
+                printf(" ");
+            count = 0;
+        }
+    }
+    printf("= %0.0lf\n",sum);
+}
+
+int main()
+{
+    char x[] = "asdf60dfddfd12qqq20dfd";
+    sumNumbersInString(x);
+    char y[]= "sdfjd202dfd20dfd20";
+    sumNumbersInString(y);
+
+}
+
+Output:
+60 + 12 + 20 + = 92
+202 + 20 + 20= 242
+
+Process finished with exit code 0
+
+//Q5
