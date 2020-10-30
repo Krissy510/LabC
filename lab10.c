@@ -255,6 +255,37 @@ void main() {
     }
 }
 
+
+// 4
+#include <stdio.h>
+
+int main(){
+
+    FILE *fptr;
+    char fname[30];
+    unsigned char c;
+
+    printf("Enter a filename: ");
+    gets(fname);
+
+    fptr = fopen(fname, "r");
+
+    if( fptr == NULL ){
+        printf("Error: Cannot open the file.\n");
+        return 0;
+    }
+
+    while( fread(&c,1,1,fptr) == 1 ){
+        printf("%02X ",c);
+        for( int i = 0; i < 9; i++){
+            fread(&c,1,1,fptr);
+            printf("%02X ",c);
+        }
+        printf("\n");
+    }
+}
+
+
 //Q5
 #include <stdio.h>
 #include <stdlib.h>
