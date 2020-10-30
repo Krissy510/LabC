@@ -173,3 +173,84 @@ void main() {
     printf("Content of the file after writing:\n");
     displayFile(file_name);
 }
+
+//2
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+#define MAXCHAR 1000
+
+
+
+int check_File_exist(char* filename) {
+    FILE* fp;
+    fp = fopen(filename, "r");
+    if (fp == NULL) {
+        return 0;
+    }
+    else {
+        return 1;
+    }
+}
+
+
+
+void main() {
+    char property[1000];
+    char file_name[1000];
+    char read[1000];
+    int check;
+    char choice[100];
+
+    printf("Enter the name of an INI file: ");//"setting.ini"
+    gets(file_name);
+    if (check_File_exist(file_name) == 0)
+    {
+        printf("Error: Cannot open the file.\n");
+        return 0;
+    }
+    while (1)
+    {
+        FILE* fp = fopen(file_name, "r");
+        int check2 = 0;
+        check = 0;
+        printf("Enter a property name: ");
+        gets(property);
+        int size = strlen(property);
+        while (fgets(read, MAXCHAR, fp) != NULL) {
+            if (read[0] != ';' || read[0] != '[') {
+                for (int i = 0; i < size; i++) {
+                    if (read[i] == property[i]) {
+                        check++;
+                    }
+                }
+            }
+            if (check == size) {
+                check2 = 1;
+                size = strlen(read);
+                for (int i = check; i < size;i++) {
+                    if (read[i] != '=')
+                    {
+                        printf("%c", read[i]);
+                    }
+                }
+            }
+            else if (check != size) {
+                check = 0;
+            }
+        }
+        fclose(fp);
+        if (check2 == 0) {
+            printf("ERROR:PROPERTY NOT FOUND.\n");
+        }
+        printf("Query another property (y/n): ");
+        gets(choice);
+        if (choice[0] != '\n') {
+            if (choice[0] == 'y')
+                printf("\n");
+            else if (choice[0] == 'n')
+                break;
+        }
+    }
+}
