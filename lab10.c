@@ -254,3 +254,69 @@ void main() {
         }
     }
 }
+
+//Q5
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define COL 128
+#define ROW 10
+
+int checkName(char* filename) {
+    FILE* inFile;
+
+    inFile = fopen(filename, "r");
+
+    if (inFile == NULL) {
+        printf("Error: Cannot open the file to read.\n");
+
+        return 0;
+    }
+    else
+        fclose(inFile);
+    return 1;
+
+}
+
+void readFile(char* Filename) {
+    FILE* inFile;
+    inFile = fopen(Filename, "r");
+    unsigned char C;
+    unsigned char arr[] = { 0x0A,0x13,0x6F,0x29,0x35,0x18,0x70,0x00,0x03,0x35,0x42,0x73,0x9C,0xAD,0xFA,0x6C,0xAD };
+
+    int count = 0;
+
+    while (fread(&C, 1, 1, inFile)) {
+        if (C == arr[count])
+        {
+            count += 1;
+            if (count == 17) {
+                printf("Infected\n");
+                return;
+            }
+        }
+        else
+        {
+            count = 0;
+            continue;
+        }
+
+    }
+    printf("Clean\n");
+    fclose(inFile);
+
+}
+
+
+void main() {
+    char fileName[1000];
+
+    for (int i = 0; i < 4;i++) {
+        printf("Enter the filename: ");
+        gets(fileName);
+
+        if (checkName(fileName) == 1) {
+            readFile(fileName);
+        }
+    }
+}
