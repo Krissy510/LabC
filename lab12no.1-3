@@ -27,26 +27,39 @@ int cardCheck(struct Card* cardPtr, char rank, char suit) {
     return 0;
 }
 
-int inthelist(struct Card* cardPtr, char rank, char suit) {
-    int check = 0;
-    while (cardPtr != NULL) {
-        if (rank == cardPtr->rank && suit == cardPtr->suit)
-            check += 1;
-        cardPtr = cardPtr->next;
-    }
-    if (check == 0)
-        return 1;
-    return 0;
-}
+int fk = 0;
+
 
 void removeCard(struct Card* cardPtr, char rank, char suit) {
-    struct Card* temp;
+    struct Card* temp,*pre_point = NULL;
+    int check = 0,count = 0;
     while (cardPtr != NULL) {
         if (rank == cardPtr->rank && suit == cardPtr->suit) {
-            free(cardPtr);
+            check = 1;
+            if (count == 0) { //head
+                fk = 1;
+                break;
+            }
+            else if (cardPtr->next == NULL) {
+                temp = cardPtr;
+                cardPtr = pre_point;
+                cardPtr->next = NULL;
+                free(temp);
+                break;
+            }
+            else { 
+                temp = cardPtr;
+                pre_point->next = cardPtr->next;
+                free(temp);
+                break;
+            }
         }
-        cardPtr = cardPtr->next;
+        pre_point = cardPtr;
+        count++;
+        cardPtr = cardPtr->next;    
     }
+    if(check == 0)
+        printf("Error: Specified card is not in the list\n");
 }
 
 
@@ -111,7 +124,7 @@ int main() {
                 continue;
             }
 
-            if (cardCheck(firstptr, rank, suit) == true) {
+            if (cardCheck(firstptr, rank, suit) == 1) {
                 printf("Error: Card already in the list\n");
                 continue;
             }
@@ -137,15 +150,11 @@ int main() {
             printf("Enter a card to remove: ");
             scanf("%c%c", &rank, &suit);
             getchar();
-
-            if (inthelist(firstptr, rank, suit) == true) {
-                printf("Error: Specified card is not in the list\n");
-                continue;
-            }
-            if (firstptr->rank == rank && firstptr->suit == suit) {
+            removeCard(firstptr, rank, suit);
+            if (fk == 1) {
+                temp = firstptr;
                 firstptr = firstptr->next;
-                free(&first);
-                displayCards(firstptr);
+                fk = 0;
             }
 
             printf("The cards in the list are\n");
