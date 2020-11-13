@@ -1,0 +1,162 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+#include <ctype.h>
+
+struct  Card {
+    char rank;
+    char suit;
+    struct Card* next;
+};
+
+void displayCards(struct Card* cardPtr) {
+    while (cardPtr != NULL) {
+        printf("%c%c ", (*cardPtr).rank, cardPtr->suit);
+        cardPtr = cardPtr->next;
+    }
+}
+int cardCheck(struct Card* cardPtr, char rank, char suit) {
+    while (cardPtr != NULL) {
+        if (rank == cardPtr->rank && suit == cardPtr->suit) {
+            return 1;
+        }
+        cardPtr = cardPtr->next;
+    }
+    return 0;
+}
+
+int inthelist(struct Card* cardPtr, char rank, char suit) {
+    int check = 0;
+    while (cardPtr != NULL) {
+        if (rank == cardPtr->rank && suit == cardPtr->suit)
+            check += 1;
+        cardPtr = cardPtr->next;
+    }
+    if (check == 0)
+        return 1;
+    return 0;
+}
+
+void removeCard(struct Card* cardPtr, char rank, char suit) {
+    struct Card* temp;
+    while (cardPtr != NULL) {
+        if (rank == cardPtr->rank && suit == cardPtr->suit) {
+            free(cardPtr);
+        }
+        cardPtr = cardPtr->next;
+    }
+}
+
+
+int main() {
+    struct Card first = { 'A','S' };
+    struct Card second;
+    struct Card* ptrA, * ptrB;
+    struct Card* temp, * last, * tempaddr, * firstptr;
+    int count = 0, rcheck = 0, scheck = 0;
+    char enter[100], rank, suit;
+    char ranks[] = { '2','3','4','5','6','7','8','9','T','J','Q','K','A' };
+    char suits[] = { 'H','D','C','S' };
+
+    second.rank = '2';
+    second.suit = 'H';
+
+    ptrA = (struct Card*)malloc(1 * sizeof(struct Card));
+    (*ptrA).rank = '3';
+    (*ptrA).suit = 'C';
+
+    ptrB = (struct Card*)calloc(1, sizeof(struct Card));
+    ptrB->rank = '4';
+    ptrB->suit = 'D';
+
+
+    first.next = &second;
+    second.next = ptrA;
+    ptrA->next = ptrB;
+    ptrB->next = NULL;
+    last = ptrB;
+    firstptr = &first;
+
+    printf("The cards in the list are\n");
+    displayCards(&first);
+    printf("\n\n");
+
+    while (1) {
+
+        printf("Add a card, Remove a card, or Quit (A/R/Q): ");
+        gets(enter);
+        switch (toupper(enter[0]))
+        {
+        case 'A':
+            printf("Enter a new card: ");
+            scanf("%c%c", &rank, &suit);
+            getchar();
+
+            for (int i = 0; i < 12;i++) {
+                if (rank == ranks[i]) {
+                    rcheck = 1;
+                    break;
+                }
+            }
+            for (int i = 0; i < 4; i++) {
+                if (suit == suits[i]) {
+                    scheck = 1;
+                    break;
+                }
+            }
+            if (rcheck == 0 || scheck == 0) {
+                printf("Error: Invalid input\n");
+                continue;
+            }
+
+            if (cardCheck(firstptr, rank, suit) == true) {
+                printf("Error: Card already in the list\n");
+                continue;
+            }
+
+            temp = (struct Card*)malloc(1 * sizeof(struct Card));
+
+            temp->rank = rank;
+            temp->suit = suit;
+            last->next = temp;
+            temp->next = NULL;
+            last = temp;
+
+
+            printf("The cards in the list are\n");
+            displayCards(&first);
+            printf("\n\n");
+
+            count += 1;
+            rcheck = 0;
+            scheck = 0;
+            break;
+        case 'R':
+            printf("Enter a card to remove: ");
+            scanf("%c%c", &rank, &suit);
+            getchar();
+
+            if (inthelist(firstptr, rank, suit) == true) {
+                printf("Error: Specified card is not in the list\n");
+                continue;
+            }
+            if (firstptr->rank == rank && firstptr->suit == suit) {
+                firstptr = firstptr->next;
+                free(&first);
+                displayCards(firstptr);
+            }
+
+            printf("The cards in the list are\n");
+            displayCards(firstptr);
+            printf("\n\n");
+            break;
+        case 'Q':
+            exit(0);
+            break;
+        default:
+            break;
+        }
+    }
+}
