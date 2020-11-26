@@ -255,6 +255,78 @@ void main() {
     }
 }
 
+//3
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+void uparray(char* ary) {
+	for (int i = 0; i < strlen(ary); i++) {
+		ary[i] = toupper(ary[i]);
+	}
+}
+
+int checkSpelling(char* word) {
+	FILE* fp = fopen("dict.txt","r");
+	char readline[1000];
+	int check = 0;
+	while (1) {
+		fscanf(fp, "%s ", readline);
+		if (strcmp(readline,word) == 0) {
+			check = 1;
+			break;
+		}
+		if (strcmp(readline, "ZZZ") == 0)
+			break;
+	}
+	return check;
+}
+
+int checkFile(char* filename) {
+	FILE* fp = fopen(filename, "r");
+	if (fp == NULL) 
+		return 0;
+	else {
+		fclose(fp);
+		return 1;
+	}
+}
+
+void main() {	
+	char readline[1000];
+	char user_file[1000];
+	int line = 0;
+	printf("Enter a filename: ");
+	gets(user_file);
+	if (checkFile(user_file) == 0) {
+		printf("ERROR: Find not found.\n");
+		return 0;
+	}
+	else {
+		FILE* fp = fopen(user_file, "r");
+		while (fgets(readline, 1000, fp) != NULL)
+		{
+			line++;
+			char* token;
+			token = strtok(readline, " ,.");
+			while (token != NULL)
+			{
+				if (strcmp(token, "\n") != 0) {
+					char temp[1000];
+					strcpy(temp, token);
+					uparray(token);
+					if (checkSpelling(token) == 0)
+						printf("Line %d: %s\n", line, temp);
+				}
+				token = strtok(NULL, " ,.\n");
+			}
+		}
+		fclose(fp);
+	}
+}
+
 
 // 4
 #include <stdio.h>
